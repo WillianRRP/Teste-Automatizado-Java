@@ -49,5 +49,7 @@ public class GoogleTest {
         WebElement resultado = driver.findElement(By.cssSelector(".VwiC3b.yXK7lf.p4wth.r025kc.hJNv6b"));
         String resultadoTexto = resultado.getText();
         assertTrue(resultadoTexto, resultadoTexto.contains("É o maior roedor do mundo, pesando até 91 kg e medindo até 1,2 m de comprimento e 60 cm de altura. A pelagem é densa, de cor avermelhada a marrom escuro."));
+     driver.quit();
+    
     }
 }

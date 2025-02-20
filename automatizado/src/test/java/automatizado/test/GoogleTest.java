@@ -2,21 +2,43 @@ package automatizado.test;
 
 import static org.junit.Assert.assertTrue;
 
+import org.junit.BeforeClass;
 import org.junit.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
+
+import automatizado.Page.GooglePO;
 
 public class GoogleTest extends BaseTest{
 
+
+    private static GooglePO googlePage;
+
+    @BeforeClass
+    public static void prepararTestes(){
+        googlePage = new GooglePO(driver);
+
+    }
     @Test
-    public void deve_PesquisarNoGoogle() throws InterruptedException {
-        WebElement inputPesquisa = driver.findElement(By.name("q"));
-        inputPesquisa.sendKeys("Capivara" + Keys.ENTER);
-        Thread.sleep(5000);
-        WebElement resultado = driver.findElement(By.cssSelector(".VwiC3b.yXK7lf.p4wth.r025kc.hJNv6b"));
-        String resultadoTexto = resultado.getText();
-        assertTrue(resultadoTexto, resultadoTexto.contains("É o maior roedor do mundo"));
+    public void TC001_deveSerPesquisarNoGoogleOTextoCapivara(){
+        googlePage.pesquisar("Capivara");
+        //WebElement inputPesquisa = driver.findElement(By.name("q"));
+
+        String resultado = googlePage.obtertResultadoDaPesquisa();
+        assertTrue(resultado, resultado.contains("Sobre"));
+    
+    }
+    /**
+     * Este teste é semelhante ao primeiro teste (TC001), mas com uma verificação adicional.
+     * O objetivo é garantir que, ao pesquisar por "Capivara", o resultado da pesquisa contenha
+     * a frase específica "É o maior roedor do mundo".
+     */
+    @Test
+    public void TC002_deveRetornarResultadoComFraseEspecificaAoPesquisarPorCapivara(){
+
+        googlePage.pesquisar("Capivara");
+        //WebElement inputPesquisa = driver.findElement(By.name("q"));
+
+        String resultado = googlePage.obtertResultadoDaPesquisa2();
+        assertTrue(resultado, resultado.contains("É o maior roedor do mundo"));
     
     }
 }

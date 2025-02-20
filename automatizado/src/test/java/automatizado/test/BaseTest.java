@@ -15,8 +15,17 @@ public abstract class BaseTest {
 
     @BeforeClass
     public static void iniciar(){
+
+        
+/*
+* Versão utilizada do chromedriver 132.0.6834.197
+*/ 
         System.setProperty("webdriver.chrome.driver", CAMINHO_DRIVER);
 
+/*
+*  tive que colocar essas opções pois meu chromedriver estava pedindo para eu verificar se eu não sou robô
+*/ 
+       
         ChromeOptions options = new ChromeOptions();
         options.addArguments("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36");
         options.addArguments("--disable-blink-features=AutomationControlled");

@@ -40,9 +40,20 @@ public class LoginTest extends BaseTest {
 
     
     }
+    @Test
+    public void TC003_naoDeveLogarNoSistmaComEmailVazi0ESenhaIncorreta(){
+        loginPage.executarAcaoDeLogar("", "Testezinho");
+
+        loginPage.buttonEntrar.click();
+       String mensagem = loginPage.obterMensagem();
+
+       assertEquals(mensagem, "Informe usuário e senha, os campos não podem ser brancos.");
+
+    
+    }
 
     @Test
-    public void TC003_DeveLogarNoSistma(){
+    public void TC004_DeveLogarNoSistma(){
         loginPage.executarAcaoDeLogar("adm@admin.com", "admin@123");
 
         loginPage.buttonEntrar.click();

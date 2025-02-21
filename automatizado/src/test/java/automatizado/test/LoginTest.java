@@ -40,11 +40,10 @@ public class LoginTest extends BaseTest {
 
     
     }
-
-
     @Test
     public void TC003_naoDeveLogarNoSistmaComEmailVazioESenhaInvalida(){
-        loginPage.executarAcaoDeLogar("", "oiasasdzxsii");
+        loginPage.executarAcaoDeLogar("oiasasdzxsii", "oiasasdzxsii");
+        loginPage.executarAcaoDeLogar("", "oiii");
 
         loginPage.buttonEntrar.click();
        String mensagem = loginPage.obterMensagem();

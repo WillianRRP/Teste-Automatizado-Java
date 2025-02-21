@@ -10,7 +10,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 
 public abstract class BaseTest {
     protected static WebDriver driver;
-    private static final String URL_BASE = "https://www.google.com/"; 
+    private static final String URL_BASE = "file:///C:/Users/Picha/Downloads/sistema/login.html"; 
     private static final String CAMINHO_DRIVER = "src/test/java/automatizado/resource/chromedriver.exe"; 
 
     @BeforeClass
